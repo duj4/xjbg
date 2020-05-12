@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+    </style>
+    <script src="../jquery-3.5.0.js"></script>
+    <title>事件解绑</title>
+</head>
+<body>
+    <div></div>
+    <ul>
+        <li>我们都是好孩子</li>
+        <li>我们都是好孩子</li>
+        <li>我们都是好孩子</li>
+    </ul>
+    <p>我是p标签</p>
+    <script>
+        $('div').on({
+            click: function() {
+                console.log('我点击了！');
+            },
+            mouseover: function() {
+                console.log('我鼠标经过了！');
+            }
+        });
+
+        $('ul').on('click', 'li', function() {
+            console.log('li');
+        });
+        // 事件解绑
+        // $('div').off(); // 解除div上面的所有事件
+        // $('div').off('click'); // 解除click事件
+        $('ul').off('click', 'li'); // 解除事件委托
+
+        // one事件，只能触发一次
+        $('p').one('click', function() {
+            console.log($(this).text());
+        })
+    </script>
+</body>
+</html>
