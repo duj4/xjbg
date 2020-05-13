@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="jquery-3.5.1.js"></script>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+    </style>
+    <title>事件对象</title>
+</head>
+<body>
+    <div></div>
+    <script>
+        $(document).on('click', function() {
+            console.log("click document");
+        });
+
+        // e是事件对象，可以用来阻止默认行为和阻止冒泡
+        $('div').on('click', function(e) {
+            console.log(e);
+            e.stopPropagation(); // 停止冒泡，不会触发上面的document click事件
+        });
+    </script>
+</body>
+</html>

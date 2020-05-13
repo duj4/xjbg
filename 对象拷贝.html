@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="jquery-3.5.1.js"></script>
+    <title>对象拷贝</title>
+</head>
+<body>
+    <script>
+        // 把某个对象拷贝（合并）给另一个对象使用，可以用extend方法
+        // $.extend([deep], target, object1, [object2])
+        // deep: 深层拷贝，可选，默认是浅拷贝
+        // target: 拷贝目标
+        // object: 待拷贝的对象，可以有多个
+
+        // var targetObj = {};
+        // var obj = {
+        //     id: 1,
+        //     name: 'jason'
+        // };
+        // $.extend(targetObj, obj);
+        // console.log(targetObj);
+
+        // 原来的值会被覆盖掉
+        // var targetObj = {
+        //     id: 0
+        // };
+        // var obj = {
+        //     id: 1,
+        //     name: 'jason'
+        // };
+        // $.extend(targetObj, obj);
+        // console.log(targetObj);
+
+        var targetObj = {
+            msg: {
+                sex: 'male'
+            }
+        };
+        var obj = {
+            id: 1,
+            name: 'jason',
+            msg: {
+                age: 18
+            }
+        };
+        // $.extend(targetObj, obj); //浅拷贝： 把被拷贝对象的复杂数据类型的地址拷贝给目标对象，修改目标对象会影响被拷贝对象， 而且会覆盖掉冲突的部分
+        $.extend(true, targetObj, obj); // 深拷贝拷贝的是对象本身，而不是地址，所以修改目标对象不会影响被拷贝对象，且不会覆盖目标对象中冲突的部分
+        console.log(targetObj);
+        targetObj.msg['age'] = 20;
+        console.log(obj);
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+    </style>
+    <script src="jquery-3.5.1.js"></script>
+    <title>多库共存</title>
+</head>
+<body>
+    <div></div>
+    <script>
+        // 1. 用jQuery代替$
+        // 2. 自己声明替代的变量
+        var suibian = $.noConflict();
+        suibian('div').on('click', function() {
+            console.log('click div!');
+        });
+        suibian('div').triggerHandler('click');
+    </script>
+</body>
+</html>
